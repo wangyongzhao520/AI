@@ -62,7 +62,7 @@ def register():
         
         # Validate email
         try:
-            validate_email(email)
+            validate_email(email, check_deliverability=False)
         except EmailNotValidError:
             return jsonify({'error': 'Invalid email address'}), 400
         
@@ -173,7 +173,7 @@ def update_profile():
         if 'email' in data:
             email = data['email'].strip().lower()
             try:
-                validate_email(email)
+                validate_email(email, check_deliverability=False)
             except EmailNotValidError:
                 return jsonify({'error': 'Invalid email address'}), 400
             

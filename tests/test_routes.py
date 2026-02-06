@@ -49,7 +49,7 @@ def test_register_user(client):
     """Test user registration"""
     response = client.post('/api/register', json={
         'username': 'testuser',
-        'email': 'test@example.com',
+        'email': 'test@gmail.com',
         'password': 'Test1234',
         'full_name': 'Test User'
     })
@@ -62,13 +62,13 @@ def test_register_duplicate_username(client):
     """Test registration with duplicate username"""
     client.post('/api/register', json={
         'username': 'testuser',
-        'email': 'test1@example.com',
+        'email': 'test1@gmail.com',
         'password': 'Test1234'
     })
     
     response = client.post('/api/register', json={
         'username': 'testuser',
-        'email': 'test2@example.com',
+        'email': 'test2@gmail.com',
         'password': 'Test1234'
     })
     assert response.status_code == 400
@@ -90,7 +90,7 @@ def test_register_weak_password(client):
     """Test registration with weak password"""
     response = client.post('/api/register', json={
         'username': 'testuser',
-        'email': 'test@example.com',
+        'email': 'test@gmail.com',
         'password': 'weak'
     })
     assert response.status_code == 400
@@ -102,7 +102,7 @@ def test_login(client):
     # Register user first
     client.post('/api/register', json={
         'username': 'testuser',
-        'email': 'test@example.com',
+        'email': 'test@gmail.com',
         'password': 'Test1234'
     })
     
