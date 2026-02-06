@@ -281,6 +281,7 @@ AI/
    - 使用 PostgreSQL 或 MySQL 替代 SQLite
    - 启用 HTTPS
    - 设置适当的 CORS 策略
+   - **禁用 debug 模式**: 设置 `FLASK_DEBUG=false` 或不设置该环境变量
 
 2. **密码策略**:
    - 至少 8 个字符
@@ -290,6 +291,10 @@ AI/
 3. **Token 管理**:
    - JWT token 默认无过期时间，建议在生产环境中设置过期时间
    - 考虑实现 refresh token 机制
+
+4. **开发与生产**:
+   - 开发环境: 设置 `FLASK_DEBUG=true` 启用调试模式
+   - 生产环境: 务必设置 `FLASK_DEBUG=false` 或不设置该变量，使用生产级 WSGI 服务器（如 Gunicorn）
 
 ## 扩展功能建议 (Future Enhancements)
 
